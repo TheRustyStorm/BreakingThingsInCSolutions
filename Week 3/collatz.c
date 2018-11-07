@@ -12,18 +12,24 @@ float add(float a, float b){
 }
 
 int collatz(int num){
+    
     if(num == 1){
         printf("\n");
         return 1;
-    }
-    if(num % 2 == 0){
-        int newNum = num / 2;
-        printf("%i ", newNum);
-        return collatz(newNum);
+    } 
+    
+    int newNum;
+    newNum = num % 2 == 0 ? num / 2 : num * 3 + 1;
+    printf("%i ", newNum);
+    return collatz(newNum);
+} 
+
+void col(int n){
+    printf("%i ", n);
+    if(n == 1){
+        printf("\n");
     }else{
-        int newNum = num * 3 + 1;
-        printf("%i ", newNum);
-        return collatz(newNum);
+        col(n % 2 == 0 ? n / 2 : n * 3 + 1);
     }
 }
 
@@ -85,14 +91,16 @@ uint8_t setNthBitToZero(uint8_t originalValue, uint8_t bitPosition){
 
 
 
-int main(void){
+int main(void){ 
+    col(37);
+    /*
     int number = 37;
     printf("Collatz: ");
     collatz(number);
 
 
     int secondNumber = 40;
-    printf("Summe der Zahlen zwischen %i und %i", number, secondNumber);
+    printf("Summe der Zahlen zwischen %i und %i = ", number, secondNumber);
     int sum = calculateSum(number, secondNumber);
     printf("%i \n", sum);
 
@@ -115,7 +123,7 @@ int main(void){
     printf("Value 2 vorher: %u \n", value2);
     value2 = setNthBitToZero(value2, 5);
     printf("Value 2 nachher: %u \n", value2);
-
+    */
 }
 
 
