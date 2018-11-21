@@ -11,7 +11,7 @@ typedef struct Gun{
 } Gun;
 
 typedef struct Player{
-    unsigned int health;
+    int health;
     int shield;
     Gun weapon;
     unsigned int money;
@@ -42,13 +42,15 @@ int howOftenCanIReload(Gun *weapon){
     return result;
 }
 
-int reload(Gun *weapon){
+void reload(Gun *weapon){
     weapon->ammo -= weapon->clipSize - weapon->clipAmmo;
 }
 
 void pew (Gun *weapon){
     if(weapon->clipAmmo == 0){
         printf("You need to reload! \n");
+        reload(weapon);
+        weapon->clipAmmo = 25;
     }else{
         weapon->clipAmmo--;
     }
@@ -62,18 +64,19 @@ Player drinkPotion(Player *player, Potion *potion){
 
 
 void calculateDmg(ShootingParty *shootingParty){
-    shootingParty->defender.shield -= shootingParty->attacker.weapon.damage;
     pew(&(shootingParty->attacker.weapon));
-    if(shootingParty->defender.shield < 0){
-        shootingParty->defender.health += shootingParty->defender.shield;
-        shootingParty->defender.shield = 0;
+    if(shootingParty->defender.shield > 0){
+      shootingParty->defender.shield -= shootingParty->attacker.weapon.damage;
+      shootingParty->defender.health += shootingParty->defender.shield;
+      shootingParty->defender.shield = 0;
+    }else{
+    shootingParty->defender.health -= shootingParty->attacker.weapon.damage;
     }
 }
 
 
-Person buyUselessSkin(Person *dad){
+void buyUselessSkin(Person *dad){
     dad->money -= 20;
-    return *dad;
 }
 
 
@@ -92,9 +95,9 @@ int main(void){
     printf("How often can i reload?: %i \n", howOftenCanIReload(pistolptr));
 
     Gun machineGun = {100, 25, 25, 22};
-    Player peter = {100, 50, machineGun};
+    Player peter = {100, 50, machineGun, 20};
 
-    Player dominik = {100, 50, machineGun};
+    Player dominik = {100, 50, machineGun, 20};
 
     
     ShootingParty party = {peter, dominik};
@@ -128,12 +131,12 @@ int main(void){
     ShootingParty kill = {dominik, peter};
     ShootingParty *killPtr = &kill;
 
-    for(int i = 0; i <= killPtr->defender.health; i++){
-        printf("Dominik Ammo: %i \n", killPtr->attacker.weapon.clipAmmo);
-        printf("Peter Shield: %i \n", partyptr->defender.shield);
-        printf("Peter Leben: %i \n", partyptr->defender.health);
-        printf("Dominik schießt auf Peter \n");
+    while(killPtr->defender.health > 0){
         calculateDmg(killPtr);
+        printf("Dominik Ammo: %i \n", killPtr->attacker.weapon.clipAmmo);
+        printf("Peter Shield: %i \n", killPtr->defender.shield);
+        printf("Peter Leben: %i \n", killPtr->defender.health);
+        printf("Dominik schießt auf Peter \n");
     } 
   
 }
