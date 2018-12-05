@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdint.h>
 
-#define AMOUNT_NUMBERS 100000000
+#define AMOUNT_NUMBERS 1000000
 int numbers[AMOUNT_NUMBERS];
 
 void printArr()

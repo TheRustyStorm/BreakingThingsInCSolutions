@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ARRAY_LENGTH 100000
+int array1[ARRAY_LENGTH];
+
 void tauschen(int *x, int *y){
     int a = *x;
     *x = *y;
     *y = a;
 }
 
-int sortieren(int *l, int length){
-    int x = 0;
-    for (int i = 0 ; i < length - 1 ; i++){
-        for (int j = 0 ; i < length - i - 1; i++){
+int sortieren(int *l){
+    for (int i = 0 ; i < ARRAY_LENGTH - 1 ; i++){
+        for (int j = 0 ; j < ARRAY_LENGTH - i - 1; j++){
             if (l[j] > l[j+1]){
                 tauschen(&l[j], &l[j+1]);
             }
@@ -19,22 +21,20 @@ int sortieren(int *l, int length){
     return 0;
 }
 
-int ausgabe(int* l, int length){
-    for (int i = 0 ; i < length ; i++){
+void ausgabe(int* l){
+    for (int i = 0 ; i < ARRAY_LENGTH ; i++){
         printf("%i ", l[i]);
     }
     printf("\n");
 }
 
 int main(){
-    int length = 10;
-    int array1[length];
-    for (int i = 0 ; i < length ; i++){
-        array1[i] = rand() % 10;
+    for (int i = 0 ; i < ARRAY_LENGTH ; i++){
+        array1[i] = rand() % ARRAY_LENGTH;
     }
-    ausgabe(array1, length);
-    sortieren(array1, length);
-    ausgabe(array1, length);
+//    ausgabe(array1, length);
+    sortieren(array1);
+//    ausgabe(array1);
 
     return 0;
 }
