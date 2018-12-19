@@ -5,7 +5,7 @@
 typedef struct ArrayList{
   int index;
   int capacity;
-  int *ptr;
+  int *ptr;
 } ArrayList;
 
 ArrayList* create(int capacity){
@@ -40,7 +40,7 @@ int getElement(ArrayList *list, int index){
 }
 
 int size(ArrayList *list){
-  return list->size;
+  return list->index;
 }
 
 void deleteList(ArrayList *list){
