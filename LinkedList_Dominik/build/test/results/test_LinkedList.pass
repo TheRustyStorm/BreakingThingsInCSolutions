@@ -1,0 +1,74 @@
+---
+:source:
+  :path: test
+  :file: test_LinkedList.c
+:successes:
+- :test: test_LinkedList_allocateMemoryList
+  :line: 12
+  :message: ''
+- :test: test_LinkedList_startLength
+  :line: 14
+  :message: ''
+- :test: test_LinkedList_startFirstNode
+  :line: 16
+  :message: ''
+- :test: test_LinkedList_startLastNode
+  :line: 18
+  :message: ''
+- :test: test_LinkedList_allocateMemoryElement
+  :line: 20
+  :message: ''
+- :test: test_LinkedList_createNewElementSetsValue
+  :line: 24
+  :message: ''
+- :test: test_LinkedList_createNewElementHasNoNextNode
+  :line: 28
+  :message: ''
+- :test: test_LinkedList_addInititalElementFirstNode
+  :line: 32
+  :message: ''
+- :test: test_LinkedList_addInititalElementLastNode
+  :line: 38
+  :message: ''
+- :test: test_LinkedList_addInititalElementLength
+  :line: 44
+  :message: ''
+- :test: test_LinkedList_appendElementLinkToPreviousNode
+  :line: 50
+  :message: ''
+- :test: test_LinkedList_appendElementLastNode
+  :line: 58
+  :message: ''
+- :test: test_LinkedList_appendElementLength
+  :line: 66
+  :message: ''
+- :test: test_LinkedList_isEmpty
+  :line: 74
+  :message: ''
+- :test: test_LinkedList_isNotEmpty
+  :line: 76
+  :message: ''
+- :test: test_LinkedList_addToEndLastNodeValue
+  :line: 82
+  :message: ''
+- :test: test_LinkedList_addToBeginFirstNodeValue
+  :line: 88
+  :message: ''
+- :test: test_LinkedList_addToBeginEmptyList
+  :line: 95
+  :message: ''
+- :test: test_LinkedList_addToBeginLinkedNextNode
+  :line: 100
+  :message: ''
+- :test: test_LinkedList_addToBeginLength
+  :line: 107
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 20
+  :passed: 20
+  :failed: 0
+  :ignored: 0
+:stdout: []
+:time: 0.0018172819982282817
