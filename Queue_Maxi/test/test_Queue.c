@@ -59,16 +59,16 @@ void test_maxQueueAdded(void){
 }
 
 void test_addToQueue(void){
-    enqueue(q, 2);
-    enqueue(q, 2);
-    TEST_ASSERT_EQUAL(2, q->memory[q->maxSize - q->size]);
+    enqueue(q, 3);
+    enqueue(q, 4);
+    TEST_ASSERT_EQUAL(4, q->memory[q->size - 1]);
 }
 
 void test_removeFromQueue(void){
     enqueue(q, 1);
-    enqueue(q, 2);
+    enqueue(q, 3);
     dequeue(q);
-    TEST_ASSERT_EQUAL(1, q->memory[q->maxSize - q->size]);
+    TEST_ASSERT_EQUAL(1, q->memory[q->size]);
 }
 
 void test_queueSizeDecreased(void){
